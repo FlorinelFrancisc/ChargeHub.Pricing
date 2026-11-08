@@ -2,7 +2,8 @@
 namespace ChargeHub.Pricing; // Namnområde för projektet
 
 // Abstrakt basklass för alla typer av laddstationer
-public abstract class ChargingStation
+
+public abstract class ChargingStation : IReportable
 {
     // Laddstationens unika identifierare
     public string Id { get; }
@@ -23,4 +24,12 @@ public abstract class ChargingStation
     // Abstrakt metod som underklasser måste implementera
     // Tar emot laddad energi i kWh och returnerar priset i kronor
     public abstract decimal CalculatePrice(decimal kwh);
+
+    // Skapar en rapport med stationens ID och maximala effekt
+    public string GetReport()
+    {
+        // Returnerar information om laddstationen som text
+        return $"Station {Id}: {MaxKw} kW";
+    }
+
 }
