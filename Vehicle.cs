@@ -2,7 +2,8 @@
 namespace ChargeHub.Pricing; // Namnområde för projektet
 
 // Klassen Vehicle representerar en elbil
-public class Vehicle
+
+public class Vehicle : IReportable
 {
     // Bilens unika identifierare
     public string Id { get; }
@@ -68,6 +69,13 @@ public class Vehicle
 
         // Öka laddningen, men aldrig över 100 procent
         Percent = Math.Min(100, Percent + addedPercent);
+    }
+
+    // Skapar en rapport med bilens ID och batteriprocent
+    public string GetReport()
+    {
+        // Returnerar bilens information som en text
+        return $"Bil {Id}: {Percent} %";
     }
 
 }
